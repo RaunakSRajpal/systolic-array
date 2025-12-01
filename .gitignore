@@ -1,5 +1,17 @@
 *.xpr
+
+## directory
+*.cache
+*.hw
+.metadata
+*.data
+*.ipdefs
+.Xil
+*.sdk
+*.ip_user_files
 ipcache
+
+## reports/logs/dump files
 *.jou
 *.log
 *.debug
@@ -19,5 +31,7 @@ ipcache
 *.dmp
 *.rpx
 *.rpt
+
+## 
 ipshared
 
