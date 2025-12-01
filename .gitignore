@@ -11,6 +11,15 @@
 *.ip_user_files
 ipcache
 
+## simulation results
+*.sim/**/xsim/
+# *.sim\**\xsim\
+!*.wcfg
+!*.coe
+
+## Export files
+*.xsa
+
 ## reports/logs/dump files
 *.jou
 *.log
@@ -31,7 +40,9 @@ ipcache
 *.dmp
 *.rpx
 *.rpt
+*.rlx
+*.prj
 
-## 
+## ip
 ipshared
-
+ipcfg
