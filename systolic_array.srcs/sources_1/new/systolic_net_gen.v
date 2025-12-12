@@ -24,32 +24,22 @@
 module systolic_net #(parameter N = 4, parameter WIDTH = 8) (
     input   clk,
     input   rst,
-    input   [WIDTH-1:0]pA_i[0:N-1],
-    input   [WIDTH-1:0]pB_i[0:N-1],
-    input   [WIDTH-1:0]pC_i[0:N-1],
-    output  [WIDTH-1:0]pA_o[0:N-1],
-    output  [WIDTH-1:0]pB_o[0:N-1],
-    output  [WIDTH-1:0]pC_o[0:N-1]
+    input   [WIDTH-1:0]I[0:N-1],
+    output  [WIDTH-1:0]O[0:N-1]
 );
 
     // Generate NxN IP step processors for systolic array
-
-    // Network Topology for inner product 
-    genvar i,j;
+    genvar i;
     generate
         for (i = 0; i < N; i = i+1) begin: Gen_proc_modules
-            for (j = 0; j < N; j = j+1) begin
-                if (i == 0) begin
-                    ipstep_proc #(WIDTH) node_pe(.clk(clk), .rst(rst), .A(pA_i[j]), .B(pB_o[j-1]), .C(pC_o[j-1]));
-                end
-                if (j == 0) begin
-                    ipstep_proc #(WIDTH) node_pe(.clk(clk), .rst(rst), .A(pA_i[i-1]), .B(pB_i[i]), .C(pC_i[i]));
-                end
-
-                ipstep_proc #(WIDTH) node_pe(.clk(clk), .rst(rst), .A(pA_o[i-1]), .B(pB_o[j-1]), .C(pC_o[j-1]));
-
-            end
+            ipstep_proc #(WIDTH) node_pe(.clk(clk), .rst(rst), .A(), .B(), .C());
         end
     endgenerate
+
+    // Network Topology for inner product 
+    integer j;    
+    for (j = 0; j < N; j = j+1) begin
+        // network
+    end
 
 endmodule
