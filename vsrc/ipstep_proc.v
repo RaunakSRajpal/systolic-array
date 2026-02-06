@@ -45,19 +45,20 @@ module ipstep_proc #(parameter WIDTH = 8) (
     assign A_o = reg_a;
     assign B_o = reg_b;
 
-    always @(posedge clk or rst) begin
-        if (rst) begin
-            reg_a = 8'b00;
-            reg_b = 8'b00;
-            reg_c = 8'b00;
+    always @(posedge clk or negedge rst) begin
+        if (!rst) begin
+            reg_a <= 8'b00;
+            reg_b <= 8'b00;
+            reg_c <= 8'b00;
+        end else begin
+            reg_a <= A_i;
+            reg_b <= B_i;
+            reg_c <= C_i;
         end
 
         // for (integer j = 0; j < N; j++) begin
         //     R[j] <= I[j];
         // end
-        reg_a <= A_i;
-        reg_b <= B_i;
-        reg_c <= C_i;
     end
 
 endmodule

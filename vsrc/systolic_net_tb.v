@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module ipstep_proc_tb(
+module systolic_net_tb(
     );
 
     localparam  WIDTH = 8;
@@ -45,8 +45,8 @@ module ipstep_proc_tb(
     task init(); begin
         reset = 1'b1;
         pA_i = 8'h00;
-        B_i = 8'h00;
-        C_i = 8'h00;
+        pB_i = 8'h00;
+        pC_i = 8'h00;
     end
     endtask
 
@@ -57,9 +57,9 @@ module ipstep_proc_tb(
         init();
 
         #10     reset = 1'b0;
-        #10     A_i = 8'h01;  B_i = 8'h01;
-        #10     A_i = 8'h0a;  B_i = 8'h01;  C_i = C;
-        #10     A_i = 8'h02;  B_i = 8'h03;  C_i = C;
+        #10     pA_i = 8'h01;  pB_i = 8'h01;
+        #10     pA_i = 8'h0a;  pB_i = 8'h01;  pC_i = pC_o;
+        #10     pA_i = 8'h02;  pB_i = 8'h03;  pC_i = pC_o;
     end
 
 endmodule

@@ -8,6 +8,7 @@
 *.ipdefs
 .Xil
 *.sdk
+*.srcs
 *.ip_user_files
 ipcache
 
